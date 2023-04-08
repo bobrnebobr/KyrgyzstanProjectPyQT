@@ -1,0 +1,5 @@
+venv/
+animation/
+.idea/
+__pycache__/
+data/config.py
