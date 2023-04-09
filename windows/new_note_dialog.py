@@ -45,6 +45,8 @@ class NewNoteDialog(QDialog, Ui_Dialog):
         if not self.formWidget.children()[-1].toPlainText() or not self.formWidget.children()[1].text():
             self.errorInfoLabel.setText("Укажите, пожалуйста, все поля")
         db_sess = db_session.create_session()
+        if db_sess.query(Note).filter(Note.name == self.formWidget.children()[1].text()).all():
+            return self.errorInfoLabel.setText("Название должно быть уникальнаым")
         new_note = Note(name=self.formWidget.children()[1].text(), text=self.formWidget.children()[-1].toPlainText(),
                         creator_id=self.user.id, datetime=datetime.datetime.now())
         db_sess.add(new_note)
@@ -56,6 +58,8 @@ class NewNoteDialog(QDialog, Ui_Dialog):
         if not self.formWidget.children()[1].text() or not self.formWidget.children()[5].text():
             return self.errorInfoLabel.setText("Пожалуйста, укажите название записи и пароль")
         db_sess = db_session.create_session()
+        if db_sess.query(Password).filter(Password.name == self.formWidget.children()[1].text()).all():
+            return self.errorInfoLabel.setText("Название должно быть уникальным")
         new_password = Password(name=self.formWidget.children()[1].text(),
                                 username=self.formWidget.children()[3].text(),
                                 password=self.formWidget.children()[5].text(),
