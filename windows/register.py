@@ -60,7 +60,7 @@ class RegisterDialog(QDialog, Ui_Dialog):
         db_sess.add(register_user)
         db_sess.commit()
 
-        self.switch_function("LoginManager")
+        self.switch_function("LoginDialog")
 
     def enable_or_disable_form(self, need_to_enable: bool):
         self.registerButton.setEnabled(need_to_enable)

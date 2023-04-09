@@ -11,18 +11,22 @@ WINDOWS = {"LoginDialog": LoginDialog, "RegisterDialog": RegisterDialog, "Passwo
 
 
 def change_window(next, user=None):
-    global window
-    window.close()
-    if user:
-        window = WINDOWS[next](change_window, user)
-    else:
-        window = WINDOWS[next](change_window)
-    window.show()
+    try:
+        global window
+        window.close()
+        if user:
+            window = WINDOWS[next](change_window, user)
+        else:
+            window = WINDOWS[next](change_window)
+        window.show()
+    except Exception as exc:
+        print(exc)
 
 
 if __name__ == "__main__":
     db_session.global_init()
     app = QApplication(sys.argv)
+    app.setStyleSheet("QHeaderView::section { background-color: rgb(36,41,45); border-width:2; border-radius:5px; font-size:12pt; }")
     window = LoginDialog(change_window)
     window.show()
     sys.exit(app.exec())

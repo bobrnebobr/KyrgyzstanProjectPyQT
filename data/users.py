@@ -15,3 +15,4 @@ class User(SqlAlchemyBase):
     created_date = sqlalchemy.Column(sqlalchemy.DateTime)
 
     notes = orm.relationship("Note", back_populates='user')
+    passwords = orm.relationship("Password", back_populates='user')

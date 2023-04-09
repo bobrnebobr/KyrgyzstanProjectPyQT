@@ -1,0 +1,9 @@
+greenlet==2.0.2
+MarkupSafe==2.1.2
+psycopg2==2.9.6
+PyQt5==5.15.9
+PyQt5-Qt5==5.15.2
+PyQt5-sip==12.11.1
+SQLAlchemy==2.0.9
+typing_extensions==4.5.0
+Werkzeug==2.2.3

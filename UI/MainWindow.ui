@@ -35,6 +35,28 @@
        </spacer>
       </item>
       <item>
+       <widget class="QPushButton" name="generateNewPasswordButton">
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius:5px;
+border-width:2px;
+padding:6px;
+border-color:rgb(13,116,231);
+background-color:rgb(13,116,231);
+color:rgb(255,255,255);
+font-size:12pt;</string>
+        </property>
+        <property name="text">
+         <string>Сгенерировать новый пароль</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="addNote">
         <property name="font">
          <font>
@@ -103,37 +125,12 @@ font-size:12
         <attribute name="headerVisible">
          <bool>false</bool>
         </attribute>
-        <column>
-         <property name="text">
-          <string>id</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>имя</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>описание</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>дата и время создания</string>
-         </property>
-         <property name="font">
-          <font>
-           <family>Mongolian Baiti</family>
-          </font>
-         </property>
-        </column>
        </widget>
       </item>
      </layout>
     </item>
     <item row="0" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0">
       <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
@@ -149,6 +146,41 @@ font-size:12
          </size>
         </property>
        </spacer>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color:rgb(255,255,255);border-width:2;border-radius:5px;background-color:rgb(36,41,45);</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Записи  </string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Пароли</string>
+         </property>
+        </item>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="profileButton">

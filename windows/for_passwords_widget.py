@@ -4,6 +4,6 @@ from widgets.ForPasswordsWidget import Ui_Form
 
 
 class ForPasswordsWidget(QWidget, Ui_Form):
-    def __init__(self):
+    def __init__(self, parent):
         super(ForPasswordsWidget, self).__init__()
-        self.setupUi(self)
+        self.setupUi(parent)
