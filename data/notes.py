@@ -10,8 +10,8 @@ class Note(SqlAlchemyBase):
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
     name = sqlalchemy.Column(sqlalchemy.String, nullable=False, unique=True)
-    text = sqlalchemy.Column(sqlalchemy.String)
-    datetime = sqlalchemy.Column(sqlalchemy.DateTime)
-    creator_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey("users.id"))
-
-    user = orm.relationship('User')
+    salt = sqlalchemy.Column(sqlalchemy.LargeBinary)
+    cipher_text = sqlalchemy.Column(sqlalchemy.LargeBinary)
+    nonce = sqlalchemy.Column(sqlalchemy.LargeBinary)
+    auth_tag = sqlalchemy.Column(sqlalchemy.LargeBinary)
+    to_ask_master_password = sqlalchemy.Column(sqlalchemy.Boolean)

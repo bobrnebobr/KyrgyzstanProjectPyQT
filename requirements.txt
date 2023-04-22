@@ -7,3 +7,5 @@ PyQt5-sip==12.11.1
 SQLAlchemy==2.0.9
 typing_extensions==4.5.0
 Werkzeug==2.2.3
+rsa~=4.9
+pyperclip~=1.8.2

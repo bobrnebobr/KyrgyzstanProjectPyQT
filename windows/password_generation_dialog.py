@@ -8,6 +8,7 @@ class PasswordGenerator(QDialog, Ui_Dialog):
     def __init__(self):
         super(PasswordGenerator, self).__init__()
         self.setupUi(self)
+        self.setWindowTitle("Генерация пароля")
         self.generate_password()
 
         self.repeatButton.clicked.connect(self.generate_password)

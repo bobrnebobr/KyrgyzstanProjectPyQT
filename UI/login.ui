@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>275</width>
-    <height>290</height>
+    <height>184</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,13 +19,13 @@
   <property name="minimumSize">
    <size>
     <width>275</width>
-    <height>290</height>
+    <height>184</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>275</width>
-    <height>290</height>
+    <height>184</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -35,20 +35,7 @@
    <string notr="true">background-color:rgb(36,41,45);</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="4" column="0" colspan="2">
+   <item row="3" column="0" colspan="2">
     <widget class="QLabel" name="label">
      <property name="font">
       <font>
@@ -66,7 +53,32 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="loginTitle">
+     <property name="font">
+      <font>
+       <family>Tahoma</family>
+       <pointsize>25</pointsize>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:rgb(255,255,255);font-size:25pt;</string>
+     </property>
+     <property name="text">
+      <string>Вход</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::PlainText</enum>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
     <widget class="QWidget" name="formWidget" native="true">
      <property name="styleSheet">
       <string notr="true">background-color:rgb(43,49,55);
@@ -74,49 +86,6 @@ border-radius:5px;
 border-width:2px;</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <widget class="QLabel" name="loginLabel">
-        <property name="font">
-         <font>
-          <family>Tahoma</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color:rgb(255,255,255);</string>
-        </property>
-        <property name="text">
-         <string>Логин</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="loginEdit">
-        <property name="font">
-         <font>
-          <family>Tahoma</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color:rgb(255,255,255);background-color:rgb(36,41,45);font-size:12pt;
-border-radius:5px;
-border-width:2px;</string>
-        </property>
-        <property name="inputMethodHints">
-         <set>Qt::ImhNone</set>
-        </property>
-        <property name="echoMode">
-         <enum>QLineEdit::Normal</enum>
-        </property>
-       </widget>
-      </item>
       <item>
        <widget class="QLabel" name="passwordLabel">
         <property name="font">
@@ -129,7 +98,7 @@ border-width:2px;</string>
          <string notr="true">color:rgb(255,255,255);</string>
         </property>
         <property name="text">
-         <string>Пароль</string>
+         <string>Мастер-пароль</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -363,54 +332,7 @@ font-size:12pt;</string>
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QPushButton" name="registerButton">
-        <property name="font">
-         <font>
-          <family>Tahoma</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-radius:5px;
-border-width:2px;
-padding:6px;
-border-color:rgb(13,116,231);
-background-color:rgb(13,116,231);
-color:rgb(255,255,255);
-font-size:12pt;</string>
-        </property>
-        <property name="text">
-         <string>Регистрация</string>
-        </property>
-       </widget>
-      </item>
      </layout>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="loginTitle">
-     <property name="font">
-      <font>
-       <family>Tahoma</family>
-       <pointsize>25</pointsize>
-      </font>
-     </property>
-     <property name="layoutDirection">
-      <enum>Qt::LeftToRight</enum>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color:rgb(255,255,255);font-size:25pt;</string>
-     </property>
-     <property name="text">
-      <string>Вход</string>
-     </property>
-     <property name="textFormat">
-      <enum>Qt::PlainText</enum>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
     </widget>
    </item>
   </layout>

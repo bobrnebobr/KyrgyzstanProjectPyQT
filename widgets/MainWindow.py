@@ -82,6 +82,7 @@ class Ui_MainWindow(object):
 "")
         self.treeWidget.setAlternatingRowColors(False)
         self.treeWidget.setObjectName("treeWidget")
+        self.treeWidget.headerItem().setText(0, "1")
         self.treeWidget.header().setVisible(False)
         self.gridLayout.addWidget(self.treeWidget, 0, 0, 1, 1)
         self.gridLayout_2.addLayout(self.gridLayout, 1, 0, 1, 1)
@@ -105,20 +106,6 @@ class Ui_MainWindow(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.horizontalLayout.addWidget(self.comboBox)
-        self.profileButton = QtWidgets.QPushButton(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Tahoma")
-        font.setPointSize(12)
-        self.profileButton.setFont(font)
-        self.profileButton.setStyleSheet("border-radius:5px;\n"
-"border-width:2px;\n"
-"padding:6px;\n"
-"border-color:rgb(13,116,231);\n"
-"background-color:rgb(13,116,231);\n"
-"color:rgb(255,255,255);\n"
-"font-size:12pt;")
-        self.profileButton.setObjectName("profileButton")
-        self.horizontalLayout.addWidget(self.profileButton)
         self.gridLayout_2.addLayout(self.horizontalLayout, 0, 0, 1, 1)
         self.gridLayout_2.setRowStretch(1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -141,6 +128,5 @@ class Ui_MainWindow(object):
         self.quit.setText(_translate("MainWindow", "Выйти"))
         self.comboBox.setItemText(0, _translate("MainWindow", "Записи  "))
         self.comboBox.setItemText(1, _translate("MainWindow", "Пароли"))
-        self.profileButton.setText(_translate("MainWindow", "Профиль"))
         self.settingsAction.setText(_translate("MainWindow", "Настройки"))
         self.quitAction.setText(_translate("MainWindow", "Выйти"))

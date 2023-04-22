@@ -125,12 +125,17 @@ font-size:12
         <attribute name="headerVisible">
          <bool>false</bool>
         </attribute>
+        <column>
+         <property name="text">
+          <string notr="true">1</string>
+         </property>
+        </column>
        </widget>
       </item>
      </layout>
     </item>
     <item row="0" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
       <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
@@ -180,28 +185,6 @@ font-size:12
           <string>Пароли</string>
          </property>
         </item>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="profileButton">
-        <property name="font">
-         <font>
-          <family>Tahoma</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-radius:5px;
-border-width:2px;
-padding:6px;
-border-color:rgb(13,116,231);
-background-color:rgb(13,116,231);
-color:rgb(255,255,255);
-font-size:12pt;</string>
-        </property>
-        <property name="text">
-         <string>Профиль</string>
-        </property>
        </widget>
       </item>
      </layout>
