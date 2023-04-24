@@ -28,13 +28,16 @@ class NewNoteDialog(QDialog, Ui_Dialog):
         self.comboBox.activated.connect(self.change_type)
 
     def change_type(self, choice):
-        if choice == self.type:
-            return
-        if choice == 0:
-            self.switch_to_note()
-        if choice == 1:
-            self.switch_to_password()
-        self.type = choice
+        try:
+            if choice == self.type:
+                return
+            if choice == 0:
+                self.switch_to_note()
+            if choice == 1:
+                self.switch_to_password()
+            self.type = choice
+        except Exception as exc:
+            print(exc)
 
     def submit(self):
         if self.type == 0:
@@ -43,22 +46,25 @@ class NewNoteDialog(QDialog, Ui_Dialog):
             self.add_password()
 
     def add_note(self):
-        if not self.formWidget.children()[-1].toPlainText() or not self.formWidget.children()[1].text():
-            return self.errorInfoLabel.setText("Укажите, пожалуйста, все поля")
-        db_sess = db_session.create_session()
-        if db_sess.query(Note).filter(Note.name == self.formWidget.children()[1].text()).all():
-            return self.errorInfoLabel.setText("Название должно быть уникальным")
-        encrypted_message = crypto.encode_message(self.formWidget.children()[-1].toPlainText(), self.password)
-        new_note = Note(name=self.formWidget.children()[1].text(),
-                        salt=encrypted_message[0],
-                        cipher_text=encrypted_message[1],
-                        nonce=encrypted_message[2],
-                        auth_tag=encrypted_message[3],
-                        to_ask_master_password=self.checkBox.isChecked())
-        db_sess.add(new_note)
-        db_sess.commit()
-        self.function_when_access(self.type)
-        self.close()
+        try:
+            if not self.formWidget.children()[-1].toPlainText() or not self.formWidget.children()[1].text():
+                return self.errorInfoLabel.setText("Укажите, пожалуйста, все поля")
+            db_sess = db_session.create_session()
+            if db_sess.query(Note).filter(Note.name == self.formWidget.children()[1].text()).all():
+                return self.errorInfoLabel.setText("Название должно быть уникальным")
+            encrypted_message = crypto.encode_message(self.formWidget.children()[-1].toPlainText(), self.password)
+            new_note = Note(name=self.formWidget.children()[1].text(),
+                            salt=encrypted_message[0],
+                            cipher_text=encrypted_message[1],
+                            nonce=encrypted_message[2],
+                            auth_tag=encrypted_message[3],
+                            to_ask_master_password=self.checkBox.isChecked())
+            db_sess.add(new_note)
+            db_sess.commit()
+            self.function_when_access(self.type)
+            self.close()
+        except Exception as exc:
+            print(exc)
 
     def add_password(self):
         if not self.formWidget.children()[1].text() or not self.formWidget.children()[5].text():
@@ -89,8 +95,7 @@ class NewNoteDialog(QDialog, Ui_Dialog):
         # self.function_when_access(self.type)
         self.close()
 
-
-    def switch_to_nte(self):
+    def switch_to_note(self):
         self.change_form_widget(self)
         self.setFixedSize(420, 375)
         self.current_widget = ForNotesWidget(self.formWidget)
