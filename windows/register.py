@@ -27,8 +27,10 @@ class RegisterDialog(QDialog, Ui_Dialog):
     def register(self):
         self.enable_or_disable_form(False)
         if not self.passwordEdit.text():
+            self.enable_or_disable_form(True)
             return self.label.setText("Укажите мастер-пароль")
         if self.passwordEdit.text() != self.repeatPasswordEdit.text():
+            self.enable_or_disable_form(True)
             return self.label.setText("Пароли не совпадают")
         if self.passwordEdit.text() != self.repeatPasswordEdit.text():
             self.enable_or_disable_form(True)

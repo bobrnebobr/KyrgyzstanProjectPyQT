@@ -18,7 +18,7 @@ class LoginDialog(QDialog, Ui_Dialog):
         self.loginButton.clicked.connect(self.login)
 
     def check(self):
-        if not os.path.exists('Login Data'):
+        if not os.path.exists('User Data/Login Data'):
             self.switch_function("RegisterDialog")
 
     def login(self):

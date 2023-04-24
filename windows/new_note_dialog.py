@@ -47,7 +47,7 @@ class NewNoteDialog(QDialog, Ui_Dialog):
             return self.errorInfoLabel.setText("Укажите, пожалуйста, все поля")
         db_sess = db_session.create_session()
         if db_sess.query(Note).filter(Note.name == self.formWidget.children()[1].text()).all():
-            return self.errorInfoLabel.setText("Название должно быть уникальнаым")
+            return self.errorInfoLabel.setText("Название должно быть уникальным")
         encrypted_message = crypto.encode_message(self.formWidget.children()[-1].toPlainText(), self.password)
         new_note = Note(name=self.formWidget.children()[1].text(),
                         salt=encrypted_message[0],
@@ -61,38 +61,36 @@ class NewNoteDialog(QDialog, Ui_Dialog):
         self.close()
 
     def add_password(self):
-        try:
-            if not self.formWidget.children()[1].text() or not self.formWidget.children()[5].text():
-                return self.errorInfoLabel.setText("Пожалуйста, укажите название записи и пароль")
-            db_sess = db_session.create_session()
-            if db_sess.query(Password).filter(Password.name == self.formWidget.children()[1].text()).all():
-                return self.errorInfoLabel.setText("Название должно быть уникальным")
-            encrypted_password = crypto.encode_message(self.formWidget.children()[5].text(), self.password)
-            encrypted_username = crypto.encode_message(self.formWidget.children()[3].text(), self.password)
-            encrypted_description = crypto.encode_message(self.formWidget.children()[9].toPlainText(), self.password)
-            password = Password(name=self.formWidget.children()[1].text(),
-                                username_salt=encrypted_username[0],
-                                username_cipher_text=encrypted_username[1],
-                                username_nonce=encrypted_username[2],
-                                username_auth_tag=encrypted_username[3],
-                                password_salt=encrypted_password[0],
-                                password_cipher_text=encrypted_password[1],
-                                password_nonce=encrypted_password[2],
-                                password_auth_tag=encrypted_password[3],
-                                description_salt=encrypted_description[0],
-                                description_cipher_text=encrypted_description[1],
-                                description_nonce=encrypted_description[2],
-                                description_auth_tag=encrypted_description[3],
-                                URL=self.formWidget.children()[7].text(),
-                                to_ask_master_password=self.checkBox.isChecked())
-            db_sess.add(password)
-            db_sess.commit()
-            self.function_when_access(self.type)
-            self.close()
-        except Exception as exc:
-            print(exc)
+        if not self.formWidget.children()[1].text() or not self.formWidget.children()[5].text():
+            return self.errorInfoLabel.setText("Пожалуйста, укажите название записи и пароль")
+        db_sess = db_session.create_session()
+        if db_sess.query(Password).filter(Password.name == self.formWidget.children()[1].text()).all():
+            return self.errorInfoLabel.setText("Название должно быть уникальным")
+        encrypted_password = crypto.encode_message(self.formWidget.children()[5].text(), self.password)
+        encrypted_username = crypto.encode_message(self.formWidget.children()[3].text(), self.password)
+        encrypted_description = crypto.encode_message(self.formWidget.children()[9].toPlainText(), self.password)
+        password = Password(name=self.formWidget.children()[1].text(),
+                            username_salt=encrypted_username[0],
+                            username_cipher_text=encrypted_username[1],
+                            username_nonce=encrypted_username[2],
+                            username_auth_tag=encrypted_username[3],
+                            password_salt=encrypted_password[0],
+                            password_cipher_text=encrypted_password[1],
+                            password_nonce=encrypted_password[2],
+                            password_auth_tag=encrypted_password[3],
+                            description_salt=encrypted_description[0],
+                            description_cipher_text=encrypted_description[1],
+                            description_nonce=encrypted_description[2],
+                            description_auth_tag=encrypted_description[3],
+                            URL=self.formWidget.children()[7].text(),
+                            to_ask_master_password=self.checkBox.isChecked())
+        db_sess.add(password)
+        db_sess.commit()
+        # self.function_when_access(self.type)
+        self.close()
 
-    def switch_to_note(self):
+
+    def switch_to_nte(self):
         self.change_form_widget(self)
         self.setFixedSize(420, 375)
         self.current_widget = ForNotesWidget(self.formWidget)

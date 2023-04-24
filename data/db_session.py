@@ -2,7 +2,6 @@ import sqlalchemy as sa
 import sqlalchemy.orm as orm
 from sqlalchemy.orm import Session
 import sqlalchemy.ext.declarative as dec
-from .config import conn_str, local_str, sqlite_str
 
 
 SqlAlchemyBase = dec.declarative_base()
@@ -16,7 +15,9 @@ def global_init():
     if __factory:
         return
 
-    engine = sa.create_engine(sqlite_str, echo=False)
+    conn_str = sqlite_str = f'sqlite:///User Data/Passman Data?check_same_thread=False'
+
+    engine = sa.create_engine(conn_str, echo=False)
     __factory = orm.sessionmaker(bind=engine)
 
     from . import __all_models

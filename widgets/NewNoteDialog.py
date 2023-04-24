@@ -34,23 +34,14 @@ class Ui_Dialog(object):
         self.errorInfoLabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.errorInfoLabel.setObjectName("errorInfoLabel")
         self.gridLayout.addWidget(self.errorInfoLabel, 3, 0, 1, 3)
-        self.label = QtWidgets.QLabel(Dialog)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
-        self.label.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setFamily("Tahoma")
-        font.setPointSize(20)
-        self.label.setFont(font)
-        self.label.setStyleSheet("color:rgb(255,255,255);")
-        self.label.setAlignment(QtCore.Qt.AlignCenter)
-        self.label.setObjectName("label")
-        self.gridLayout.addWidget(self.label, 0, 1, 1, 1)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.cancelButton = QtWidgets.QPushButton(Dialog)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.cancelButton.sizePolicy().hasHeightForWidth())
+        self.cancelButton.setSizePolicy(sizePolicy)
         self.cancelButton.setStyleSheet("border-radius:5px;\n"
 "border-width:2px;\n"
 "padding:6px;\n"
@@ -61,6 +52,11 @@ class Ui_Dialog(object):
         self.cancelButton.setObjectName("cancelButton")
         self.horizontalLayout.addWidget(self.cancelButton)
         self.acceptButton = QtWidgets.QPushButton(Dialog)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.acceptButton.sizePolicy().hasHeightForWidth())
+        self.acceptButton.setSizePolicy(sizePolicy)
         self.acceptButton.setStyleSheet("border-radius:5px;\n"
 "border-width:2px;\n"
 "padding:6px;\n"
@@ -71,10 +67,6 @@ class Ui_Dialog(object):
         self.acceptButton.setObjectName("acceptButton")
         self.horizontalLayout.addWidget(self.acceptButton)
         self.gridLayout.addLayout(self.horizontalLayout, 5, 1, 1, 1)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem, 5, 2, 1, 1)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem1, 5, 0, 1, 1)
         self.horizontalWidget_2 = QtWidgets.QWidget(Dialog)
         self.horizontalWidget_2.setStyleSheet("background-color:rgb(43,49,55);\n"
 "border-width:2;border-radius:5px;")
@@ -182,6 +174,20 @@ class Ui_Dialog(object):
         self.checkBox.setStyleSheet("color:rgb(255,255,255);border-width:2;border-radius:5;background-color:rgb(43,49,55);")
         self.checkBox.setObjectName("checkBox")
         self.gridLayout.addWidget(self.checkBox, 4, 0, 1, 3)
+        self.label = QtWidgets.QLabel(Dialog)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Tahoma")
+        font.setPointSize(20)
+        self.label.setFont(font)
+        self.label.setStyleSheet("color:rgb(255,255,255);")
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
+        self.gridLayout.addWidget(self.label, 0, 0, 1, 3)
         self.gridLayout.setRowStretch(2, 1)
 
         self.retranslateUi(Dialog)
@@ -190,13 +196,13 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "Создать новую запись"))
         self.cancelButton.setText(_translate("Dialog", "Отмена"))
         self.acceptButton.setText(_translate("Dialog", "Создать"))
         self.typeLabel.setText(_translate("Dialog", "Тип"))
         self.comboBox.setItemText(0, _translate("Dialog", "Записка"))
         self.comboBox.setItemText(1, _translate("Dialog", "Логин и пароль"))
         self.checkBox.setText(_translate("Dialog", "Запрашивать мастер-пароль при просмотре данных?"))
+        self.label.setText(_translate("Dialog", "Создать новую запись"))
 
     def change_form_widget(self, Dialog):
         self.formWidget = QtWidgets.QWidget(Dialog)
