@@ -25,6 +25,8 @@ def change_window(next, password=None):
 
 
 if __name__ == "__main__":
+    if not os.path.exists("User Data"):
+        os.mkdir("User Data")
     db_session.global_init()
     app = QApplication(sys.argv)
     app.setStyleSheet("QHeaderView::section { background-color: rgb(36,41,45); border-width:2; border-radius:5px; font-size:12pt; }")
