@@ -22,6 +22,28 @@
     <item row="2" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
+       <widget class="QPushButton" name="deleteDataButton">
+        <property name="font">
+         <font>
+          <family>Tahoma</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius:5px;
+border-width:2px;
+padding:6px;
+border-color:rgb(255,0,0);
+background-color:rgb(255,0,0);
+color:rgb(255,255,255);
+font-size:12pt;</string>
+        </property>
+        <property name="text">
+         <string>Удалить все записи</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>

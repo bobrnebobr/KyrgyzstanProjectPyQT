@@ -20,11 +20,15 @@ class PasswordViewDialog(QDialog, Ui_Dialog):
 
         if self.password.to_ask_master_password:
             self.temp_widget = InputMasterPasswordWidget()
-            self.temp_widget.pushButton_2.clicked.connect(self.close)
+            self.temp_widget.pushButton_2.clicked.connect(self.close_windows)
             self.temp_widget.pushButton.clicked.connect(self.check_master_password)
             self.temp_widget.show()
         else:
             self.show_widget()
+
+    def close_windows(self):
+        self.temp_widget.close()
+        self.close()
 
     def show_widget(self):
         self.decrypted_password = crypto.decode_message((self.password.password_salt,
@@ -73,12 +77,12 @@ class PasswordViewDialog(QDialog, Ui_Dialog):
 
     def check_master_password(self):
         if not self.temp_widget.passwordEdit.text():
-            return self.label.setText("Введите логин")
+            return self.temp_widget.label.setText("Введите логин")
         if crypto.check_password(self.temp_widget.passwordEdit.text()):
             self.temp_widget.close()
             self.show_widget()
         else:
-            return self.label.setText("Неверный пароль")
+            return self.temp_widget.label.setText("Неверный пароль")
 
     def change_echo_mode(self):
         if self.passwordEdit.echoMode() == 2:

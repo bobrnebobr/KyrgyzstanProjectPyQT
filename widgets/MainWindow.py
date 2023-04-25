@@ -23,6 +23,20 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.deleteDataButton = QtWidgets.QPushButton(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Tahoma")
+        font.setPointSize(12)
+        self.deleteDataButton.setFont(font)
+        self.deleteDataButton.setStyleSheet("border-radius:5px;\n"
+"border-width:2px;\n"
+"padding:6px;\n"
+"border-color:rgb(255,0,0);\n"
+"background-color:rgb(255,0,0);\n"
+"color:rgb(255,255,255);\n"
+"font-size:12pt;")
+        self.deleteDataButton.setObjectName("deleteDataButton")
+        self.horizontalLayout_2.addWidget(self.deleteDataButton)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
         self.generateNewPasswordButton = QtWidgets.QPushButton(self.centralwidget)
@@ -123,6 +137,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.deleteDataButton.setText(_translate("MainWindow", "Удалить все записи"))
         self.generateNewPasswordButton.setText(_translate("MainWindow", "Сгенерировать новый пароль"))
         self.addNote.setText(_translate("MainWindow", "Добавить запись"))
         self.quit.setText(_translate("MainWindow", "Выйти"))

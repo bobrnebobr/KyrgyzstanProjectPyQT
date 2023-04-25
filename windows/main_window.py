@@ -9,6 +9,8 @@ from data.notes import Note
 from .password_generation_dialog import PasswordGenerator
 from .note_view_dialog import NoteViewDialog
 from .password_view_dialog import PasswordViewDialog
+from .master_password_widget import InputMasterPasswordWidget
+import crypto
 
 
 class PasswordManager(QMainWindow, Ui_MainWindow):
@@ -26,10 +28,12 @@ class PasswordManager(QMainWindow, Ui_MainWindow):
         self.generateNewPasswordButton.clicked.connect(self.generation_password_dialog)
         self.comboBox.activated.connect(self.refresh_table)
         self.treeWidget.itemDoubleClicked.connect(self.show_view_of_object)
+        self.deleteDataButton.clicked.connect(self.open_master_password_widget)
 
     def add_note(self):
         self.new_note_widget = NewNoteDialog(self.password, self.refresh_table)
         self.new_note_widget.show()
+        self.refresh_table()
 
     def show_notes(self):
         self.treeWidget.setColumnCount(2)
@@ -72,6 +76,30 @@ class PasswordManager(QMainWindow, Ui_MainWindow):
             self.viewWidget = NoteViewDialog(item.text(1), self.password)
         elif self.type == 1:
             self.viewWidget = PasswordViewDialog(item.text(1), self.password)
+        self.refresh_table()
 
-    def close_app(self):
+    def open_master_password_widget(self):
+        self.temp_widget = InputMasterPasswordWidget()
+        self.temp_widget.pushButton_2.clicked.connect(self.temp_widget.close)
+        self.temp_widget.pushButton.clicked.connect(self.check_master_password)
+        self.temp_widget.show()
+
+    def check_master_password(self):
+        if not self.temp_widget.passwordEdit.text():
+            return self.temp_widget.label.setText("Введите логин")
+        if crypto.check_password(self.temp_widget.passwordEdit.text()):
+            self.temp_widget.close()
+            self.delete_data()
+            self.refresh_table(self.type)
+        else:
+            return self.temp_widget.label.setText("Неверный пароль")
+
+    def delete_data(self):
+        db_sess = db_session.create_session()
+        db_sess.query(Password).delete()
+        db_sess.query(Note).delete()
+        db_sess.commit()
+
+    @staticmethod
+    def close_app():
         exit(0)
